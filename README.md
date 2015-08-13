@@ -1,5 +1,5 @@
 # rpna
-## RPNA: Reverse Polish Notation Array calculator ##
+## Reverse Polish Notation Array calculator ##
 
 ### (Python gpgpu kernel to support the entire cmath language) ###
 
