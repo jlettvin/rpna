@@ -1,7 +1,7 @@
 # rpna
-## RPNA: Python Reverse Polish Notation calculator for Arrays. ##
+## RPNA: Reverse Polish Notation Array calculator ##
 
-### (a gpgpu kernel to support the entire cmath language) ###
+### (Python gpgpu kernel to support the entire cmath language) ###
 
 shmath is daemon providing generic math services to client programs.  The
 result of shmath is massive calculations being performed efficiently using more
