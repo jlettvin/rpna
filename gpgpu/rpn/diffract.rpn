@@ -1,0 +1,9 @@
+(:Rwave| Rs| sqrt| pupil| diffract| square| @Rt)
+(:Gwave| Gs| sqrt| pupil| diffract| square| @Gt)
+(:Bwave| Bs| sqrt| pupil| diffract| square| @Bt)
+(1e-3| Iw| Rw| /| *| @pupil)
+&Rwave
+(1e-3| Iw| Gw| /| *| @pupil)
+&Gwave
+(1e-3| Iw| Bw| /| *| @pupil)
+&Bwave

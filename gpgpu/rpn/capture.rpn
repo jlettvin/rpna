@@ -1,0 +1,16 @@
+# capture.rpn
+#__date__       = "20130101"
+#__author__     = "jlettvin"
+#__maintainer__ = "jlettvin"
+#__email__      = "jlettvin@gmail.com"
+#__copyright__  = "Copyright(c) 2013 Jonathan D. Lettvin, All Rights Reserved"
+#__license__    = "Trade Secret"
+#__status__     = "Production"
+#__version__    = "0.0.1"
+"Simple transfer of source to target.
+Rs  # Fetch the source R plane
+@Rt # Store the target R plane
+Gs
+@Gt
+Bs
+@Bt

@@ -1,0 +1,29 @@
+# optics.rpn
+# Author Jonathan D. Lettvin
+# Copyright(c)2013 Jonathan D. Lettvin, All Rights Reserved.
+# date       = "20130101"
+# author     = "jlettvin"
+# maintainer = "jlettvin"
+# email      = "jlettvin@gmail.com"
+# copyright  = "Copyright(c) 2013 Jonathan D. Lettvin, All Rights Reserved"
+# license    = "Trade Secret"
+# status     = "Production"
+# version    = "0.0.1"
+#
+# define optics function
+#
+# Usage:
+#   optics expects two args on the stack:
+#   push 1: plane source             (for instance Rs for Rsource)
+#   push 2: plane wavelength         (for instance Rw for Rwavelength)
+#   call optics
+#   return: plane optics diffraction (for instance Rt for Rtarget)
+#
+# Functionality:
+#   Divide Rw by Iw and use the result to zoom Rs which is left on the stack.
+#   Take sqrt of zoomed Rs to get a wave function amplitude.
+#   Push current pupil diameter on stack.
+#   Use amplitude and pupil to generate wave function.
+#   Square result to get intensity function
+(:optics| Iw| divide| zoom| sqrt| pupil| diffract| square)
+#EOF

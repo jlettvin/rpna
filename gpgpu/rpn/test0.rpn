@@ -1,0 +1,7 @@
+:foo|4|sqrt|show|clear
+&foo
+(:bar|4|sqrt|show|clear)
+&bar
+:baz| sqrt|"middle of line| show|clear|"hello
+4
+&baz

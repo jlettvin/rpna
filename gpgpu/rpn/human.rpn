@@ -1,0 +1,37 @@
+# human.rpn
+# Author Jonathan D. Lettvin
+# Copyright(c)2013 Jonathan D. Lettvin, All Rights Reserved.
+# date       = "20130101"
+# author     = "jlettvin"
+# maintainer = "jlettvin"
+# email      = "jlettvin@gmail.com"
+# copyright  = "Copyright(c) 2013 Jonathan D. Lettvin, All Rights Reserved"
+# license    = "Trade Secret"
+# status     = "Production"
+# version    = "0.0.1"
+#
+# define human optics function
+#
+# Usage:
+#
+# Functionality:
+#
+"Capture desktop, apply human optics filter, display retinal image of desktop.
+
+(8.1e-3|@pupil)           # Specify aperture size.
+!optics                 # Load optics function from its file.
+(Rs| Rw| &optics| @Rt)  # Process R plane with function.
+(Gs| Gw| &optics| @Gt)  # Process G plane with function.
+(Bs| Bw| &optics| @Bt)  # Process B plane with function.
+
+#"Decay exponentially
+#(1e+1|negative|@decay)
+#(Rt| decay| *| exp| @Rt)
+#(Gt| decay| *| exp| @Gt)
+#(Bt| decay| *| exp| @Bt)
+
+
+################
+# Note that this code does not use a quit.
+# This is because it is to be executed inline many times.
+#EOF

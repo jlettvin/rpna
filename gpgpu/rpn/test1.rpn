@@ -1,0 +1,6 @@
+#(Rs| average| @Rt)
+#(Gs| average| @Gt)
+#(Bs| average| @Bt)
+(Rs| @Rt)
+(Gs| @Gt)
+(Bs| @Bt)

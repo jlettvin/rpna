@@ -1,0 +1,20 @@
+#Comments are ignored
+"Test various capabilities of RPN.py
+"Test multi
+(:bar|4|sqrt|show|clear)
+"Test call
+&bar
+
+"Test number push
+4
+"Test funkey sqrt
+sqrt
+"Test funkey show
+show
+"Test funkey clear
+clear
+
+"Test define
+:foo|4|sqrt|show|clear
+"Test call
+&foo
