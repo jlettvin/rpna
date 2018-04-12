@@ -19,7 +19,7 @@ The proposed approach is a resident RPN interpreter in the gpgpu
 which compiles into locally specialized code to distribute load.
 The client can perform follow-on operations like display.
 
-Data arrays may be accessed using coordinates so that
+Data arrays may be accessed within the gpgpu kernel using coordinates so that
 convolution and correlation may be performed on data other than the center.
 
 ### Example: (human.rpn module)
