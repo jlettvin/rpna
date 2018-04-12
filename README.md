@@ -36,7 +36,7 @@ For the R plane of the RGB image data, the following steps are executed:
     Rs         Push Rs, the R source data plane, on the stack
 	Rw         Push the peak wavelength for R data on the stack
 	&optics    Call the optics function
-	@Rt        Pop the processed R target data and store it in named variable Rt
+	@Rt        Store the processed R target data in named variable Rt
 
 The rpn program uses an RPN module called optics.
 The optics.rpn module defines a single function in one line:
