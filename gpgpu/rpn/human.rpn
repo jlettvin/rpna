@@ -18,7 +18,7 @@
 #
 "Capture desktop, apply human optics filter, display retinal image of desktop.
 
-(8.1e-3|@pupil)           # Specify aperture size.
+(8.1e-3|@pupil)         # Specify aperture size.
 !optics                 # Load optics function from its file.
 (Rs| Rw| &optics| @Rt)  # Process R plane with function.
 (Gs| Gw| &optics| @Gt)  # Process G plane with function.

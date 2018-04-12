@@ -1,10 +1,9 @@
 # rpna
 ## Reverse Polish Notation Array calculator
-### (Python gpgpu kernel to support the entire cmath language)
+### (Python gpgpu kernel to support the entire cmath library)
 
-shmath is a daemon providing generic math services to client programs.
-The result of shmath is massive calculations being performed efficiently
-using more of the calculation resources available on the computer.
+This project installs a resident language kernel in the gpgpu.
+The language explicitly supports use of the cmath library API.
 
 Most math libraries use 1 CPU in linear, pipelined, or vector mode.
 Most modern computers have multiple CPUs and at least one GPU.
@@ -16,14 +15,48 @@ The result should be a potential order of magnitude velocity increase.
 Perhaps even more if shmath is carefully designed.
 Even context-switching costs are reduced when run on multiple CPUs.  
 
-The proposed approach is to write an RPN interpreter in shmath
-which compiles into locally specialized shmath code to distribute load.
-The client program sends the RPN and shared memory keys to shmath
-then executes the code by filling source operand buffers and
-triggering a shmath execution round to fill the target buffer
-after which the client can perform follow-on operations like display.  
+The proposed approach is a resident RPN interpreter in the gpgpu
+which compiles into locally specialized code to distribute load.
+The client can perform follow-on operations like display.
 
-I expect that heavy use of shmath will cause a computer
-to heat up substantially due to efficient active use of more circuit pathways.
+### Example: (human.rpn module)
 
-A cool computer is an idle computer.
+    "Capture desktop, apply human optics filter, display retinal image of desktop.
+    (8.1e-3|@pupil)         # Specify aperture size.
+    !optics                 # Load optics function from its file.
+    (Rs| Rw| &optics| @Rt)  # Process R plane with function.
+    (Gs| Gw| &optics| @Gt)  # Process G plane with function.
+    (Bs| Bw| &optics| @Bt)  # Process B plane with function.
+
+This program performs several array processing steps on live camera images:
+It models the human eye with typical dimensions, and sets the pupil to 8.1mm.
+For the R plane of the RGB image data, the following steps are executed:
+
+    @pupil     Store the pupil size in a named variable
+    Rs         Push Rs, the R source data plane, on the stack
+	Rw         Push the peak wavelength for R data on the stack
+	&optics    Call the optics function
+	@Rt        Pop the processed R target data and store it in named variable Rt
+
+The rpn program uses an RPN module called optics.
+The optics.rpn module defines a single function in one line:
+
+    (:optics| Iw| divide| zoom| sqrt| pupil| diffract| square)
+
+This normalizes the input intensity with Iw
+then uses the normalized value as a zoom factor (to emulate refraction)
+then takes the square root to convert intensity to wave amplitude
+then applies the diffraction function using the pupil size
+then squares the result to restore the image to an intensity map.
+
+Additional modules are used (such as diffract) which use similar methods.
+
+    (:Rwave| Rs| sqrt| pupil| diffract| square| @Rt)
+    (:Gwave| Gs| sqrt| pupil| diffract| square| @Gt)
+    (:Bwave| Bs| sqrt| pupil| diffract| square| @Bt)
+    (1e-3| Iw| Rw| /| *| @pupil)
+    &Rwave
+    (1e-3| Iw| Gw| /| *| @pupil)
+    &Gwave
+    (1e-3| Iw| Bw| /| *| @pupil)
+    &Bwave
